@@ -1,0 +1,24 @@
+Rowflare {{ .Chart.AppVersion }} is starting.
+
+{{- if .Values.ingress.enabled }}
+{{- range .Values.ingress.hosts }}
+Open: http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .host }}
+{{- end }}
+{{- else }}
+Reach it from your machine with:
+
+  kubectl --namespace {{ .Release.Namespace }} port-forward svc/{{ include "rowflare.fullname" . }} 8787:{{ .Values.service.port }}
+
+then open http://127.0.0.1:8787
+{{- end }}
+
+Sign up right away: the first account becomes the owner, and everyone else joins by invite
+{{- if .Values.rowflare.allowSignup }} (ALLOW_SIGNUP is on, so anyone who can reach the instance can sign up){{ end }}.
+{{- if not .Values.rowflare.appUrl }}
+
+Set rowflare.appUrl to the public URL so invite links point to the right address.
+{{- end }}
+{{- if not .Values.persistence.enabled }}
+
+WARNING: persistence is disabled. All data is lost when the pod restarts.
+{{- end }}

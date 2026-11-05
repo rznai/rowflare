@@ -1,0 +1,21 @@
+# Used by the lint and template checks: exercises the optional parts of the chart.
+rowflare:
+  appUrl: https://rowflare.example.com
+  secretKey: test-secret-key-for-ci-only
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+  hosts:
+    - host: rowflare.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: rowflare-tls
+      hosts:
+        - rowflare.example.com
+extraEnv:
+  - name: MAIL_PROVIDER
+    value: smtp

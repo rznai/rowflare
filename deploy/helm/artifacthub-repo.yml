@@ -1,0 +1,10 @@
+# Artifact Hub repository metadata. It must be served at the root of the Helm repository,
+# https://rowflare-oss.github.io/rowflare/artifacthub-repo.yml, so the release workflow copies it to gh-pages.
+#
+# After adding the repository on artifacthub.io (Control Panel, Repositories, Add, kind "Helm charts",
+# URL https://rowflare-oss.github.io/rowflare), paste the repository ID it shows below and push again:
+# that marks the repository as "Verified publisher".
+repositoryID: a1c81f26-85c1-4a73-b8b0-5119ed53d623
+owners:
+  - name: Rowflare
+    email: hello@rowflare.com
